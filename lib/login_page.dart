@@ -48,22 +48,43 @@ class _LoginPageState extends State<LoginPage> {
 
               ),
             ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.lightBlue[100],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
             TextFormField(
               key: Key('username'),
               onChanged: (value) {
                 _formData.name = value;
               },
               decoration:  InputDecoration(
-                labelText: 'Username'),
+                labelText: 'Username',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(),
             ),
+            ),
+            SizedBox(height: 10),
             TextFormField(
               key: Key('password'),
               onChanged: (value) {
                 _formData.password = value;
               },
               decoration:  InputDecoration(
-                labelText: 'Password'),
+                labelText: 'Password',
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(),
+              ),
               obscureText: true,
+              
+            ),
+                ]
+              )
             ),
             TextButton(
               onPressed: () {
@@ -74,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.of(context).pushNamed(AppRoutes.cadastro);
               },
-              child:  Text('Sign up'),
+              child: Text('Sign up'),
             ),
           ],
         ),
