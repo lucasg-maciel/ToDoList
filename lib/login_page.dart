@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/app_routes.dart';
 import 'package:to_do_list/form_data.dart';
+import 'package:to_do_list/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -70,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextButton(
               onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.cadastro);
               },
               child:  Text('Sign up'),
             ),
