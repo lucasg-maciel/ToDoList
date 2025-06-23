@@ -28,11 +28,10 @@ class _SignupPageState extends State<SignupPage> {
     
   
 
-  // ...existing code...
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: Colors.white, // White background for the whole screen
+    backgroundColor: Colors.white, 
     body: Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
