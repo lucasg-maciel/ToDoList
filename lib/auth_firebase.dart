@@ -47,6 +47,18 @@ class AuthFirebase implements LoginAuth {
     _user = _toUser(credential.user!, name);
   }
 
+@override
+  Future<void> login(String email, String password) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+@override
+Future<void> logout() async {
+  await FirebaseAuth.instance.signOut();
+}
 
 
   static Usuario _toUser(User user, [String? name]) {

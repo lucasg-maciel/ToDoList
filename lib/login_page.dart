@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app_routes.dart';
+import 'package:to_do_list/auth_firebase.dart';
 import 'package:to_do_list/form_data.dart';
 import 'package:to_do_list/signup_page.dart';
 
@@ -16,7 +17,18 @@ class _LoginPageState extends State<LoginPage> {
 
   final _formData = FormData();
 
-  
+      Future<void> submit(FormData formData) async {
+        await AuthFirebase().login(
+          formData.email,
+          formData.password,
+        );
+        if (AuthFirebase().user != null) {
+          Navigator.of(context).pushReplacementNamed(AppRoutes.tarefas);
+        }
+
+        
+
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +65,12 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
             TextFormField(
-              key: Key('username'),
+              key: Key('email'),
               onChanged: (value) {
-                _formData.name = value;
+                _formData.email = value;
               },
               decoration:  InputDecoration(
-                labelText: 'Username',
+                labelText: 'email',
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(),
@@ -83,8 +95,7 @@ class _LoginPageState extends State<LoginPage> {
               )
             ),
             TextButton(
-              onPressed: () {
-              },
+              onPressed: () => submit(_formData),
               child:  Text('Login'),
             ),
             TextButton(
