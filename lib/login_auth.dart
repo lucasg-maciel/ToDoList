@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:to_do_list/Usuario.dart';
+import 'package:to_do_list/auth_firebase.dart';
 
-abstract class AuthService {
+abstract class LoginAuth {
   Usuario? get user;
 
   Stream<Usuario?> get userChanges;
@@ -12,12 +13,7 @@ abstract class AuthService {
     String password,
   );
 
-  Future<void> login(
-    String name,
-    String password,
-  );
-
-  Future<void> logout();
-
-
+  factory LoginAuth() {
+    return AuthFirebase();
+  }
 }

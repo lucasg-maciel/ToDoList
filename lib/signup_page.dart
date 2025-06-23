@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/app_routes.dart';
 import 'package:to_do_list/form_data.dart';
+import 'package:to_do_list/login_auth.dart';
 
 class SignupPage extends StatefulWidget {
 
@@ -16,7 +17,13 @@ class _SignupPageState extends State<SignupPage> {
   final _formData = FormData();
 
 
-
+    Future<void> submit(FormData formData) async {
+        await LoginAuth().signup(
+          formData.name,
+          formData.email,
+          formData.password,
+        );
+    }
 
     
   
@@ -103,15 +110,14 @@ Widget build(BuildContext context) {
             ),
           ),
           TextButton(
+            onPressed: () => submit(_formData),
+            child: Text('Sign up'),
+          ),
+          TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.login);
             },
             child: Text('Login'),
-          ),
-          TextButton(
-            onPressed: () {
-            },
-            child: Text('Sign up'),
           ),
         ],
       ),
